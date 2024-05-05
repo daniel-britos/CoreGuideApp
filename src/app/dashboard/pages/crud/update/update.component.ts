@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './update.component.html',
   styleUrl: './update.component.css'
 })
-export class UpdateComponent {
+export default class UpdateComponent {
 
 }

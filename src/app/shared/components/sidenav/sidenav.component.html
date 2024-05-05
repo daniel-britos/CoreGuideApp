@@ -1,0 +1,78 @@
+you<div class="toolbar-container">
+  <mat-toolbar color="primary">
+    <div class="logo-container">
+      <span class="app-name">Core Guide App</span>
+    </div>
+    <div class="header-button-container">
+      <button mat-icon-button (click)="showLeftSidenav = showRightSidenav = mainArea = false">
+        <mat-icon>fullscreen</mat-icon>
+      </button>
+      <button mat-icon-button (click)="showLeftSidenav = showRightSidenav = mainArea = true">
+        <mat-icon>fullscreen_exit</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+</div>
+
+<div class="full-page">
+  <as-split
+    [useTransition]="true"
+    unit="percent"
+    [gutterSize]="10"
+    class="as-horizontal"
+  >
+    <as-split-area
+      [size]="30"
+      [order]="1"
+      [visible]="showLeftSidenav"
+      class="split-left"
+    >
+      <button
+        class="round-btn left"
+        (click)="showLeftSidenav = !showLeftSidenav"
+      ></button>
+
+      <div class="left-side-content-container">
+        <mat-accordion>
+          @for(item of menuItems; track $index) {
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title matTooltip="Click to open panel">
+                  <span class="material-symbols-outlined">
+                    {{ item.title }}
+                  </span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+            <div>
+              <span [routerLink]="item.path" style="color: white;" matTooltip="Click to View Function">{{ item.path }}</span>
+            </div>
+            </mat-expansion-panel>
+          }
+        </mat-accordion>
+      </div>
+    </as-split-area>
+
+    <as-split-area
+      [size]="40"
+      [order]="2"
+      [visible]="true"
+      class="main-content"
+    >
+      <button
+        class="round-btn right"
+        (click)="showLeftSidenav = !showLeftSidenav"
+      ></button>
+      <button
+        class="round-btn left"
+        (click)="showRightSidenav = !showRightSidenav"
+      ></button>
+
+      <div class="page-container">
+        <router-outlet />
+      </div>
+    </as-split-area>
+  </as-split>
+</div>
+
+
+

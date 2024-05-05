@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './read.component.html',
   styleUrl: './read.component.css'
 })
-export class ReadComponent {
+export default class ReadComponent {
 
 }
